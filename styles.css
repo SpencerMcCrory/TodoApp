@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;900&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #e9ecef;
+}
+header {
+  background: #6d28d9;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+#todo-form-section {
+  margin: 20px;
+}
+#new-todo {
+  padding: 10px;
+  width: 70%;
+  margin-right: 10px;
+  border-color: black;
+  border-width: 1px;
+  box-shadow: 2px 2px 5px 1px rgb(196, 196, 196);
+}
+#todo-list-section {
+  margin: 20px;
+}
+#todo-list {
+  list-style: none;
+  padding: 0;
+}
+#todo-list li {
+  background: white;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 1s;
+  box-shadow: 2px 2px 5px 1px rgb(196, 196, 196);
+  /* without making z-index 2, the complete text will either go above the text
+  or behind. */
+  z-index: 2;
+}
+
+li {
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  color: #6d28d9;
+  font-stretch: semi-condensed;
+  font-weight: 600;
+  background-color: #6d28d9;
+  position: relative; /* Required for absolute positioning of the pseudo-element */
+  overflow: hidden;
+}
+
+/*  */
+/* Custom content when the todo is marked as complete using a psuedo-element */
+/* THE GREEN COMPLETE IN THE BG */
+/*  */
+#todo-list li.complete::before {
+  content: "Complete"; /* The background text */
+  position: absolute;
+  top: 50%; /* positioning element */
+  left: 50%; /* positioning element */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Ensures the text is centered based on parent */
+  font-size: 40px;
+  color: #45ce77; /* slightly different color for a subtle effect */
+  font-size: 5rem;
+  font-stretch: extra-expanded;
+  z-index: -1; /* This is what makes the text go behind the span text  */
+}
+
+/* BG of todo */
+#todo-list .complete {
+  background-color: #4ade80;
+}
+
+/*  */
+/* all CRUD buttons styling */
+/*  */
+.ToDoButton {
+  border-radius: 8px;
+  border-color: #6d28d9 !important;
+  border-width: 1px;
+  background-color: #6d28d9;
+  color: white;
+  box-shadow: 2px 2px 5px 1px rgb(196, 196, 196);
+  padding: 5px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 900;
+}
+
+.ToDoButton:hover {
+  background-color: white;
+  color: #6d28d9;
+}
+.deleteButton:hover,
+.editButton:hover,
+.saveButton {
+  background-color: #6d28d9;
+  color: white;
+}
+
+.deleteButton,
+.editButton,
+.saveButton {
+  border-radius: 8px;
+  border-color: #6d28d9 !important;
+  border-width: 1px;
+  font-size: 16px;
+
+  background-color: white;
+  color: #6d28d9;
+  padding: 5px;
+  font-family: "Mulish", sans-serif;
+  margin-left: 5px;
+}
+
+.deleteButton {
+  color: red;
+}
+
+.editButton {
+  color: #1d4ed8;
+}
+
+.edit-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.complete .deleteButton:hover {
+  background-color: #6d28d9;
+  color: white;
+}
+
+.complete .deleteButton {
+  border-color: #4ade80 !important;
+}
+
+.complete .editButton {
+  border-color: #4ade80 !important;
+}
+
+.complete .editButton:hover {
+  background-color: #6d28d9;
+  color: white;
+}
+
+.inputError {
+  color: red;
+}
+
+.todo-checkbox {
+  margin-right: 1.5%;
+}
+
+/* custom animations for the checkbox */
+input[type="checkbox"] {
+  transform: rotate(90deg) scale(1.5);
+  transition: all 1s;
+}
+
+input[type="checkbox"]:checked {
+  transform: rotate(720deg) scale(2);
+  transition: all 1s;
+}
+
+/* input text to edit the selected to do */
+.editInput {
+  width: 800px;
+  font-size: 1.1rem;
+}
+/* end of crud */
+
+/* entire content contained in li (todo) */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.todo-text {
+  flex: 1; /* This makes the text take up all available space */
+}
+
+/*  */
+/* Media query for smaller devices */
+/*  */
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 16px;
+  }
+
+  li {
+    font-size: 1.5rem;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: center;
+  }
+  .todo-item {
+    flex-direction: column;
+  }
+  #todo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ToDoButton {
+    width: 100%;
+    justify-content: center;
+    font-size: 2rem;
+  }
+  #new-todo {
+    width: 100%;
+    box-sizing: border-box;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  input[type="text"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 400px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  input[type="checkbox"] {
+    margin-top: 20px;
+    width: 25px;
+    height: 25px;
+  }
+  .todo-text {
+    margin-top: 90px;
+    margin-bottom: 50px;
+    font-size: 3.5rem;
+  }
+  #todo-list li.complete::before {
+    font-size: 8rem;
+    font-stretch: normal;
+    /* looks too crowded on mobile with the text in the background
+    so changed location to go above text*/
+    color: #45ce77;
+    top: 24%;
+  }
+  .editButton,
+  .deleteButton {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  #todo-list li.complete::before {
+    /* so complete fits within box of a medium screen */
+    font-size: 6rem;
+  }
+  input[type="text"] {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #todo-list li.complete::before {
+    /* so complete fits within box of a small screen */
+    font-size: 5rem;
+    color: #45ce77;
+    top: 18%;
+  }
+  input[type="text"] {
+    width: 250px;
+  }
+}

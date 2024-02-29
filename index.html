@@ -1,0 +1,37 @@
+<!-- Assignment 2 - Mobile Programming
+
+     Purpose: Create a user friendly todo mobile web app that user can add, delete and update todos using INDEXDB. 
+
+     Created by: Spencer McCrory 8878450 - Section 5
+     November 17th, 2023 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <header>
+      <h1>My Todos</h1>
+    </header>
+    <section id="todo-form-section">
+      <form id="todo-form">
+        <input
+          type="text"
+          id="new-todo"
+          placeholder="Add a new task..."
+          autofocus
+        />
+        <button class="ToDoButton" type="submit">Add Todo</button>
+      </form>
+    </section>
+    <section id="todo-list-section">
+      <ul id="todo-list"></ul>
+    </section>
+    <script src="IndexedDBManager.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
